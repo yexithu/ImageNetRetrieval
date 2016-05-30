@@ -24,4 +24,5 @@ test_b = reshape(test_b, n, length(test_b) / n);
 train_b = train_b';
 test_b = test_b';
 
-[distM resultM] = mAP(train_b,test_b, train_y,test_y);
+resultM = queryTestOnTrain(train_b,test_b);
+mapVec = mapTestOnTrain(resultM, train_y, test_y);
