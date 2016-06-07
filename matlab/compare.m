@@ -11,8 +11,8 @@ function compare(resultM, resultR, trainList, testList)
 		rm = resultM(i, 1:ntop);
 		rr = resultR(i, 1:ntop);
 
-		picRM = makePic(trainList, rm, ntop);
-		picRR = makePic(trainList, rr, ntop);
+		picRM = makePic(trainList, rm, ntop, imageroot);
+		picRR = makePic(trainList, rr, ntop, imageroot);
 
 		picA = [picRM ; picRR];	
 
@@ -28,14 +28,13 @@ function compare(resultM, resultR, trainList, testList)
 	end
 end
 
-function pic = makePic(trainL, r, ntop)
-	imageroot = '../image/';
+function pic = makePic(trainL, r, ntop, imgroot)
 	imsize = 200;
 	pic = zeros(imsize, imsize * ntop, 3);
 	picUp = [];
 	picDown = [];
 	for i = 1:ntop
-		name = strcat(imageroot, trainL{r(i)});
+		name = strcat(imgroot, trainL{r(i)});
 		temp = imread(name);		
 		temp = imresize(temp, [imsize imsize]);
 		if i <= ntop/2
@@ -47,5 +46,3 @@ function pic = makePic(trainL, r, ntop)
 	end
 	pic = [picUp; picDown];
 end
-
-

@@ -9,11 +9,6 @@ featureDim = 18;
 
 [trainX, trainY, trainL, trainB] = transform(trainBinaryFile, trainListFile, featureDim, 0);
 [testX, testY, testL, testB] = transform(testBinaryFile, testListFile, featureDim, 0);
-% target = 1640;
-% testX = trainX(target:target + 1,:);
-% testY = trainY(target:target + 1,:);
-% testL = trainL(target:target + 1,:);
-% testB = trainB(target:target + 1,:);
 
 [resultM, HDistance] = queryTestOnTrain(trainB,testB);
 % mapVec = mapTestOnTrain(resultM, trainY, testY, [10:10:500]);

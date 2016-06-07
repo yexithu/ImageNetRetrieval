@@ -37,3 +37,35 @@ Make sure everything is set in `ImageNet/finetune_net_im.prototxt`, modify paths
 
 ## evaluation
 It's time for MATLAB to enter on the stage.
+
+Put the train-code train-list, query-code query-list in folder `matlab`
+modify the virables refering the inputs in solve.m 
+<pre><code>
+trainBinaryFile = 'code-5613.dat';
+testBinaryFile = 'code-test.dat';
+trainListFile = 'list5613.txt';
+testListFile = 'test.txt';
+</code></pre>
+then run matlab at the `matlab` folder
+run solve.m
+
+if you want to visualize the result
+uncomment the code
+<pre><code>
+% compare(resultNFined, resultFined, trainL, testL);
+</code></pre>
+if you want to visualzie, make sure your pictures are saved in the  root folder of project.
+
+and funcion
+<pre><code>
+% mapVec = mapTestOnTrain(resultM, trainY, testY, [10:10:500]);
+</code></pre> 
+is used to calculate MAP(mean average precision)
+the last parameter is the n-top vector
+####Visualizaion sample
+![](http://i.imgur.com/cqzUsqV.jpg)
+![](http://i.imgur.com/GaOfXiJ.jpg)
+We provide top 10 related images in the demo.
+Since we want to show the optimization of our multi-stages retrieval strategy.
+The first two rows(10 images) are the results without multi-stages refining.
+The last two rows(10 images) are the results with multi-stages refining.
