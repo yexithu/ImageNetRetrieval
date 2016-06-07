@@ -1,5 +1,5 @@
 %% mAP: function description
-function resultM = queryTestOnTrain(trainB, testB)
+function [resultM, distM]  = queryTestOnTrain(trainB, testB)
 	mTrain = size(trainB, 1);
 	mTest = size(testB, 1);
 	n = size(trainB, 2);
@@ -16,4 +16,5 @@ function resultM = queryTestOnTrain(trainB, testB)
 		distM(i, :) = diff';
 		[~, I] = sort(diff);
 		resultM(i, :) = I';
+		distM(i, :) = diff(I');
 	end

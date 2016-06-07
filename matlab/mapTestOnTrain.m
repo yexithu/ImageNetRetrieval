@@ -1,8 +1,5 @@
-function mapVec = mapTestOnTrain(resultM, trainY, testY)
-	nTop = 10;
+function mapVec = mapTestOnTrain(resultM, trainY, testY, nTopVec)
 	mapResultM=trainY(resultM);
-
-	nTopVec = [10:10:500];
 	mapVec=zeros(size(nTopVec));
 
 	maxN = max(nTopVec);
